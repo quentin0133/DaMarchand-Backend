@@ -14,12 +14,12 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class DaMarchandBackendApplication {
 
-	private static String bot_token = "MTE3MjEzNDQ1MTg3OTM1NDM2OA.GMKkdz.tQ1ltFVcLdnSIXvofJ781-rRy88dXy4-FPg4us";
+	//private static String bot_token = "MTE3MjEzNDQ1MTg3OTM1NDM2OA.GMKkdz.tQ1ltFVcLdnSIXvofJ781-rRy88dXy4-FPg4us";
 
 	public static void main(String[] args) {
 
 
-		/*JDABuilder.createDefault(bot_token)
+		/*JDABuilder.createDefault(args[0])
 				.setMemberCachePolicy(MemberCachePolicy.ALL)
 				.enableIntents(GatewayIntent.GUILD_MEMBERS,
 						GatewayIntent.GUILD_MESSAGE_REACTIONS,
