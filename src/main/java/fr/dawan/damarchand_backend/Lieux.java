@@ -1,6 +1,6 @@
-package fr.dawan.daMarchand_backend;
+package fr.dawan.damarchand_backend;
 
-import fr.dawan.daMarchand_backend.entities.Item;
+import fr.dawan.damarchand_backend.entities.Item;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,7 +16,13 @@ public abstract class Lieux {
     private String type;
     private String nom;
 
-    public List<Item> chercher() { return null; }
-    public void continuer(int step) {}
-    public void combatre() {}
+    public List<Item> chercher() {
+        return null;
+    }
+
+    public void continuer(int step) {
+    }
+
+    public void combatre() {
+    }
 }

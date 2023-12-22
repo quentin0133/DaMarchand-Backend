@@ -1,4 +1,4 @@
-package fr.dawan.daMarchand_backend.entities;
+package fr.dawan.damarchand_backend.entities;
 
 import jakarta.persistence.*;
 
@@ -15,6 +15,16 @@ public class Item {
     private String nom;
     private String emoji;
     private double prixBase;
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", emoji='" + emoji + '\'' +
+                ", prixBase=" + prixBase +
+                '}';
+    }
 
     @OneToMany(mappedBy="item")
     private List<InventoryItem> inventories=new ArrayList<>();

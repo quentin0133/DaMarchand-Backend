@@ -1,7 +1,11 @@
-package fr.dawan.daMarchand_backend;
+package fr.dawan.damarchand_backend;
 
-import fr.dawan.daMarchand_backend.entities.*;
-import fr.dawan.daMarchand_backend.repositories.*;
+
+import fr.dawan.damarchand_backend.entities.Inventory;
+import fr.dawan.damarchand_backend.entities.InventoryItem;
+import fr.dawan.damarchand_backend.entities.Item;
+import fr.dawan.damarchand_backend.entities.Ville;
+import fr.dawan.damarchand_backend.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -25,6 +29,14 @@ public class RepositoryRunner implements CommandLineRunner {
     @Autowired(required = false)
     private VilleRepository repoVille;
 
+    @Autowired(required = false)
+    private InventoryItemRepository repoII;
+
+
+    public Item getItem(){
+        return repoItem.getItemFromName("Pierre");
+    }
+
     @Override
     public void run(String... args) throws Exception {
 
@@ -46,6 +58,66 @@ public class RepositoryRunner implements CommandLineRunner {
         repoItem.saveAndFlush(new Item("Oeuf", ":egg:", 5.0));
         repoItem.saveAndFlush(new Item("Pierre Précieuse", ":gem:", 115.0));
         repoItem.saveAndFlush(new Item("Steak", ":cut_of_meat:", 30.0));
+
+
+        repoVille.saveAndFlush(new Ville("La Capitale"));
+        repoVille.saveAndFlush(new Ville("Le Village du Vent"));
+        repoVille.saveAndFlush(new Ville("Le Patelin en ruines"));
+        repoVille.saveAndFlush(new Ville("Village de la Guilde des Marchands"));
+
+        repoInventory.saveAndFlush(
+                new Inventory(
+                        false,
+                        false,
+                        0,
+                        repoVille.getVilleFromName("La Capitale")
+                ));
+
+        Inventory invTest = repoInventory.findVilleInventoryByName("La Capitale");
+        Item itemTest = repoItem.getItemFromName("Fromage");
+        InventoryItem ii = new InventoryItem(invTest,itemTest,5);
+
+        repoII.saveAndFlush(ii);
+
+
+
+
+
+
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n"+"\t\t\t*\t\tJUSTE ICI\t\t*"+"\n\n\n\n\n\n\n\n\n\n\n");
+        System.out.println( invTest +"\n\n"+ itemTest );
+        System.out.println("\n\n\n");
+
+
+/*
+        repoItem.setItemToInventory(
+                repoInventory.findVilleInventoryByName("La Capitale"),
+                repoItem.getItemFromName("Pierre Précieuse"),
+                8
+        );
+        repoItem.setItemToInventory(
+                repoInventory.findVilleInventoryByName("La Capitale"),
+                repoItem.getItemFromName("Orange"),
+                12
+        );*/
+/*
+        List<Item> lstItem = repoItem.getItemFromInventory(repoInventory.findVilleInventoryByName("La Capitale"));
+        lstItem.forEach(System.out::println);*/
+/*
+        Item item = repoItem.getItemFromName("Fromage");
+        System.out.println(item.toString());
+*/
+        //Inventory inv = repoInventory.findVilleInventoryByName("La Capitale");
+
+/*
+        List<Item> lstItem = repoItem.findAllBaseItems();
+        lstItem.forEach(System.out::println);
+*/
+
+
+
+
+       // repoInventory.findVilleInventory();
 
         /*Item a1 = new Item("Pierre", ":rock:", 4.0);
         Item a2 = new Item("Bois", ":wood:", 2.0);

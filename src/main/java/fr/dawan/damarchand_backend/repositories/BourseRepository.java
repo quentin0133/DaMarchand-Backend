@@ -1,6 +1,7 @@
-package fr.dawan.daMarchand_backend.repositories;
+package fr.dawan.damarchand_backend.repositories;
 
-import fr.dawan.daMarchand_backend.entities.Bourse;
+
+import fr.dawan.damarchand_backend.entities.Bourse;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

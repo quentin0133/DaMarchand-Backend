@@ -1,4 +1,4 @@
-package fr.dawan.daMarchand_backend.dtos;
+package fr.dawan.damarchand_backend.dtos;
 
 public class TauxItemDTO {
     private String itemName;

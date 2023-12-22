@@ -1,4 +1,4 @@
-package fr.dawan.daMarchand_backend.entities;
+package fr.dawan.damarchand_backend.entities;
 
 import jakarta.persistence.*;
 
@@ -36,6 +36,20 @@ public class Inventory {
         this.hasHache = hasHache;
         this.hasPioche = hasPioche;
         this.epee = epee;
+    }
+
+    public Inventory(boolean hasHache, boolean hasPioche, int epee, Ville ville) {
+        this.hasHache = hasHache;
+        this.hasPioche = hasPioche;
+        this.epee = epee;
+        this.ville = ville;
+    }
+
+    public Inventory(boolean hasHache, boolean hasPioche, int epee, Joueur joueur) {
+        this.hasHache = hasHache;
+        this.hasPioche = hasPioche;
+        this.epee = epee;
+        this.joueur = joueur;
     }
 
     public long getId() {

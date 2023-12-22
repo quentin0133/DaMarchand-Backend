@@ -1,5 +1,6 @@
-package fr.dawan.daMarchand_backend.entities;
+package fr.dawan.damarchand_backend.entities;
 
+import fr.dawan.damarchand_backend.entities.Item;
 import jakarta.persistence.*;
 
 @Entity

@@ -1,10 +1,13 @@
-package fr.dawan.daMarchand_backend.repositories;
+package fr.dawan.damarchand_backend.repositories;
 
 
-import fr.dawan.daMarchand_backend.entities.Inventory;
-import fr.dawan.daMarchand_backend.entities.Item;
+
+
+import fr.dawan.damarchand_backend.entities.Inventory;
+import fr.dawan.damarchand_backend.entities.Item;
 import jakarta.persistence.TypedQuery;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -15,7 +18,8 @@ import java.util.List;
 public interface ItemRepository extends JpaRepository<Item, Long> {
 
     @Query(value = "SELECT a FROM Item a")
-    List<Item> findAllBaseItems();
+    List<Item> getAllBaseItems();
+
 //@Param("model") String model
    // "SELECT l FROM Livre l WHERE l.anneeSortie = ROUND((SELECT AVG(l2.anneeSortie) FROM Livre l2 JOIN l2.categorie c WHERE c=:categorie))"
 
@@ -53,15 +57,18 @@ WHERE
     *
     * */
 /*
-    @Query(value = "UPDATE InventoryItem ii SET ii.item_id = :item, ii.inventory_id = :inventory, ii.amount = :amount")
-    void addItemToInventoryJoueur(@Param("inventory") Inventory inventory,@Param("item") Item item, @Param("amount") int amount);
+    @Modifying
+    @Query(value = "UPDATE InventoryItem ii SET ii.inventory = :inventory, ii.item = :item, ii.amount = :amount")
+    void setItemToInventory(@Param("inventory") Inventory inventory, @Param("item") Item item, @Param("amount") int amount);
 */
-    @Query(value = "SELECT a FROM Item a")
-    void removeItemToInventoryJoueur();
+    //"UPDATE Article a SET a.prix=a.prix*1.1 WHERE a.prix>:prixmin"
+    @Query(value = "SELECT i, ii.amount FROM InventoryItem ii JOIN Item i WHERE ii.inventory = :inventory")
+    List<Item> getItemFromInventory(@Param("inventory") Inventory inventory);
 
-    @Query(value = "SELECT a FROM Item a")
-    void addItemToInventoryVille();
+    @Query(value = "SELECT i, ii.amount FROM InventoryItem ii JOIN Item i WHERE ii.inventory = :inventory AND ii.item = :item")
+    Item getSingleItemFromInventory(@Param("inventory") Inventory inventory, @Param("item") Item item);
 
-    @Query(value = "SELECT a FROM Item a")
-    void removeItemToInventoryVille();
+    @Query(value = "SELECT i FROM Item i WHERE i.nom =:item_name")
+    Item getItemFromName(@Param("item_name") String item_name);
+
 }

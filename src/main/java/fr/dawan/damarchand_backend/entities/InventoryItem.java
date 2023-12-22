@@ -1,4 +1,4 @@
-package fr.dawan.daMarchand_backend.entities;
+package fr.dawan.damarchand_backend.entities;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
