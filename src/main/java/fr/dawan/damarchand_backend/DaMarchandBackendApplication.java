@@ -19,7 +19,7 @@ public class DaMarchandBackendApplication {
 	public static void main(String[] args) {
 
 
-		/*JDABuilder.createDefault(args[0])
+		/*JDABuilder.createDefault(args[1])
 				.setMemberCachePolicy(MemberCachePolicy.ALL)
 				.enableIntents(GatewayIntent.GUILD_MEMBERS,
 						GatewayIntent.GUILD_MESSAGE_REACTIONS,

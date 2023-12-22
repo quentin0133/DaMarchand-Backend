@@ -17,6 +17,7 @@ pipeline {
         stage('Maven Build') {
             steps {
                 bat 'mvn clean package'
+                echo ${env.discord_token}
             }
             post {
                 success {
