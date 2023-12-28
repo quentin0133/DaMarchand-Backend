@@ -1,11 +1,6 @@
 package fr.dawan.damarchand_backend;
 
 
-import fr.dawan.damarchand_backend.entities.Inventory;
-import fr.dawan.damarchand_backend.entities.InventoryItem;
-import fr.dawan.damarchand_backend.entities.Item;
-import fr.dawan.damarchand_backend.entities.Ville;
-import fr.dawan.damarchand_backend.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -17,8 +12,12 @@ import java.util.Map;
 
 @Component
 public class RepositoryRunner implements CommandLineRunner {
+    @Override
+    public void run(String... args) throws Exception {
 
-    @Autowired(required = false)
+    }
+
+    /*@Autowired(required = false)
     private ItemRepository repoItem;
     @Autowired(required = false)
     private InventoryRepository repoInventory;
@@ -30,10 +29,10 @@ public class RepositoryRunner implements CommandLineRunner {
     private VilleRepository repoVille;
 
     @Autowired(required = false)
-    private InventoryItemRepository repoII;
+    private InventoryItemRepository repoII;*/
 
 
-    public Item getItem(){
+    /*public Item getItem(){
         return repoItem.getItemFromName("Pierre");
     }
 
@@ -86,7 +85,7 @@ public class RepositoryRunner implements CommandLineRunner {
 
         System.out.println("\n\n\n\n\n\n\n\n\n\n\n"+"\t\t\t*\t\tJUSTE ICI\t\t*"+"\n\n\n\n\n\n\n\n\n\n\n");
         System.out.println( invTest +"\n\n"+ itemTest );
-        System.out.println("\n\n\n");
+        System.out.println("\n\n\n");*/
 
 
 /*
@@ -222,6 +221,6 @@ public class RepositoryRunner implements CommandLineRunner {
         lst = repo.findByDescriptionLike("d___%");
         for(Article a: lst) {
             System.out.println(a);
-        }*/
-    }
+        }
+    }*/
 }

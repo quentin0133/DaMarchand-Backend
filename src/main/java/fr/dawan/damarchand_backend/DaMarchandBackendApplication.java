@@ -5,7 +5,6 @@ import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.ChunkingFilter;
 import net.dv8tion.jda.api.utils.MemberCachePolicy;
-import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -19,7 +18,7 @@ public class DaMarchandBackendApplication {
 	public static void main(String[] args) {
 
 
-		/*JDABuilder.createDefault(args[1])
+		/*DABuilder.createDefault(${env.discord_token})
 				.setMemberCachePolicy(MemberCachePolicy.ALL)
 				.enableIntents(GatewayIntent.GUILD_MEMBERS,
 						GatewayIntent.GUILD_MESSAGE_REACTIONS,
@@ -35,10 +34,6 @@ public class DaMarchandBackendApplication {
 
 
 		SpringApplication.run(DaMarchandBackendApplication.class, args);
-	}
-	@Bean
-	ModelMapper modelMapper() {
-		return new ModelMapper();
 	}
 
 
